@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/mma-fight-predictor/static/css/main.d5c23b56.chunk.css",
+    "main.js": "/mma-fight-predictor/static/js/main.f2d085f7.chunk.js",
+    "main.js.map": "/mma-fight-predictor/static/js/main.f2d085f7.chunk.js.map",
+    "runtime-main.js": "/mma-fight-predictor/static/js/runtime-main.adf5efbe.js",
+    "runtime-main.js.map": "/mma-fight-predictor/static/js/runtime-main.adf5efbe.js.map",
+    "static/js/2.86ecfca2.chunk.js": "/mma-fight-predictor/static/js/2.86ecfca2.chunk.js",
+    "static/js/2.86ecfca2.chunk.js.map": "/mma-fight-predictor/static/js/2.86ecfca2.chunk.js.map",
+    "static/js/3.db0495e5.chunk.js": "/mma-fight-predictor/static/js/3.db0495e5.chunk.js",
+    "static/js/3.db0495e5.chunk.js.map": "/mma-fight-predictor/static/js/3.db0495e5.chunk.js.map",
+    "index.html": "/mma-fight-predictor/index.html",
+    "static/css/main.d5c23b56.chunk.css.map": "/mma-fight-predictor/static/css/main.d5c23b56.chunk.css.map",
+    "static/js/2.86ecfca2.chunk.js.LICENSE.txt": "/mma-fight-predictor/static/js/2.86ecfca2.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/mma-fight-predictor/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.adf5efbe.js",
+    "static/js/2.86ecfca2.chunk.js",
+    "static/css/main.d5c23b56.chunk.css",
+    "static/js/main.f2d085f7.chunk.js"
+  ]
+}
