@@ -8,7 +8,7 @@ class SelectSearchBar extends Component {
             return [];
         }
         
-        const response = await fetch('/api/search/' + inputText);
+        const response = await fetch('https://mma-fight-predictor.herokuapp.com/api/search/' + inputText);
         const json = await response.json();
         return json.options;
     }

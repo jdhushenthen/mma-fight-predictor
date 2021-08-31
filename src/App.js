@@ -72,10 +72,27 @@ class App extends Component {
     }
   }
 
+  convertDateFormat = value => {
+    const date_arr = value.split(".")
+
+    if (date_arr.length > 1) {
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+      const date_day = date_arr[1]
+      const date_month = months[parseInt(date_arr[0]) - 1]
+      const date_year = date_arr[2].substring(2)
+  
+      return (date_day + "-" + date_month + "-" + date_year)
+    }
+    else {
+      return value
+    }
+  }
+
   handlePredictButtonPress = async (event) => {
     event.preventDefault()
 
-    const response = await fetch('/predict/' + this.state.fighter1SelectedValue.value + '/' + this.state.fighter2SelectedValue.value + '/' + this.state.fighter1Odds + '/' + this.state.fighter2Odds);
+    const response = await fetch('https://mma-fight-predictor.herokuapp.com/api/predict/' + this.state.fighter1SelectedValue.value + '/' + this.state.fighter2SelectedValue.value + '/' + this.state.fighter1Odds + '/' + this.state.fighter2Odds);
     const json = await response.json();
     console.log(json)
     this.setState({
@@ -117,7 +134,7 @@ class App extends Component {
       fighter1SelectedValue: value
     })
     
-    const response = await fetch('/api/stats/' + value.value);
+    const response = await fetch('https://mma-fight-predictor.herokuapp.com/api/stats/' + value.value);
     const json = await response.json();
 
     this.setState({
@@ -130,7 +147,7 @@ class App extends Component {
         fighter1HeadStrPerc: json['Head Str. %'],
         fighter1Height: json['Height'],
         fighter1KDAvg: json['KD Avg.'],
-        fighter1LastFight: json['Last Fight'],
+        fighter1LastFight: this.convertDateFormat(json['Last Fight']),
         fighter1LegStrPerc: json['Leg Str. %'],
         fighter1RD: json['RD'],
         fighter1Rating: json['Rating'],
@@ -153,7 +170,7 @@ class App extends Component {
       fighter2SelectedValue: value,
     })
     
-    const response = await fetch('/api/stats/' + value.value);
+    const response = await fetch('https://mma-fight-predictor.herokuapp.com/api/stats/' + value.value);
     const json = await response.json();
 
     this.setState({
@@ -166,7 +183,7 @@ class App extends Component {
       fighter2HeadStrPerc: json['Head Str. %'],
       fighter2Height: json['Height'],
       fighter2KDAvg: json['KD Avg.'],
-      fighter2LastFight: json['Last Fight'],
+      fighter2LastFight: this.convertDateFormat(json['Last Fight']),
       fighter2LegStrPerc: json['Leg Str. %'],
       fighter2RD: json['RD'],
       fighter2Rating: json['Rating'],
@@ -188,7 +205,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="Header">
-          <h3> UFC Fight Predictor </h3>
+          <h3> MMA Fight Predictor </h3>
         </div>
         <div className="Info">
           <p> Created by: Janahan Dhushenthen and Jordan Schneider </p>

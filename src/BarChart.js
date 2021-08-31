@@ -16,8 +16,8 @@ class BarChart extends Component {
                             data: this.props.data
                         }]
                     }}
-                    height={400}
-                    width={500}
+                    height={360}
+                    width={450}
                     options={{
                         maintainAspectRatio: false,
                         plugins: {
