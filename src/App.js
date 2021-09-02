@@ -92,13 +92,30 @@ class App extends Component {
   handlePredictButtonPress = async (event) => {
     event.preventDefault()
 
-    const response = await fetch('https://mma-fight-predictor.herokuapp.com/api/predict/' + this.state.fighter1SelectedValue.value + '/' + this.state.fighter2SelectedValue.value + '/' + this.state.fighter1Odds + '/' + this.state.fighter2Odds);
-    const json = await response.json();
-    console.log(json)
-    this.setState({
-      winner: json.winner,
-      probability: json.probability
-    })
+    if (this.state.fighter1SelectedValue == null) {
+      alert("Please select a name for fighter 1")
+    }
+    else if (this.state.fighter2SelectedValue == null) {
+      alert("Please select a name for fighter 2")
+    }
+    else if (this.state.fighter1SelectedValue.value == this.state.fighter2SelectedValue.value) {
+      alert("Please ensure that fighter 1 and fighter 2 are different")
+    }
+    else if (isNaN(parseFloat(this.state.fighter1Odds)) || this.state.fighter1Odds.indexOf('.') == -1 || parseFloat(this.state.fighter1Odds) <= 1.0) {
+      alert("Please enter valid decimal odds for fighter 1 (must be a float greater than 1.0)")
+    }
+    else if (isNaN(parseFloat(this.state.fighter2Odds)) || this.state.fighter2Odds.indexOf('.') == -1 || parseFloat(this.state.fighter2Odds) <= 1.0) {
+      alert("Please enter valid decimal odds for fighter 2 (must be a float greater than 1.0)")
+    }
+    else {
+      const response = await fetch('https://mma-fight-predictor.herokuapp.com/api/predict/' + this.state.fighter1SelectedValue.value + '/' + this.state.fighter2SelectedValue.value + '/' + parseFloat(this.state.fighter1Odds).toString() + '/' + parseFloat(this.state.fighter2Odds).toString());
+      const json = await response.json();
+      console.log(json)
+      this.setState({
+        winner: json.winner,
+        probability: json.probability
+      })
+    }
   }
 
   handleFighter1OddsChange = (event) => {
