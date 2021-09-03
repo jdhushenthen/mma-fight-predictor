@@ -101,11 +101,11 @@ class App extends Component {
     else if (this.state.fighter1SelectedValue.value == this.state.fighter2SelectedValue.value) {
       alert("Please ensure that fighter 1 and fighter 2 are different")
     }
-    else if (isNaN(parseFloat(this.state.fighter1Odds)) || this.state.fighter1Odds.indexOf('.') == -1 || parseFloat(this.state.fighter1Odds) <= 1.0) {
-      alert("Please enter valid decimal odds for fighter 1 (must be a float greater than 1.0)")
+    else if (isNaN(parseFloat(this.state.fighter1Odds)) || parseFloat(this.state.fighter1Odds) <= 1.0) {
+      alert("Please enter valid decimal odds for fighter 1 (must be greater than 1)")
     }
-    else if (isNaN(parseFloat(this.state.fighter2Odds)) || this.state.fighter2Odds.indexOf('.') == -1 || parseFloat(this.state.fighter2Odds) <= 1.0) {
-      alert("Please enter valid decimal odds for fighter 2 (must be a float greater than 1.0)")
+    else if (isNaN(parseFloat(this.state.fighter2Odds)) || parseFloat(this.state.fighter2Odds) <= 1.0) {
+      alert("Please enter valid decimal odds for fighter 2 (must be greater than 1)")
     }
     else {
       const response = await fetch('https://mma-fight-predictor.herokuapp.com/api/predict/' + this.state.fighter1SelectedValue.value + '/' + this.state.fighter2SelectedValue.value + '/' + parseFloat(this.state.fighter1Odds).toFixed(2) + '/' + parseFloat(this.state.fighter2Odds).toFixed(2));
