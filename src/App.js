@@ -92,10 +92,6 @@ class App extends Component {
   handlePredictButtonPress = async (event) => {
     event.preventDefault()
 
-    console.log(this.state.fighter1Odds)
-    console.log(parseFloat(this.state.fighter1Odds))
-    console.log(parseFloat(this.state.fighter1Odds).toFixed(2))
-
     if (this.state.fighter1SelectedValue == null) {
       alert("Please select a name for fighter 1")
     }
