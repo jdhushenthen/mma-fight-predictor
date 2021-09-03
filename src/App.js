@@ -110,7 +110,6 @@ class App extends Component {
     else {
       const response = await fetch('https://mma-fight-predictor.herokuapp.com/api/predict/' + this.state.fighter1SelectedValue.value + '/' + this.state.fighter2SelectedValue.value + '/' + parseFloat(this.state.fighter1Odds).toFixed(2) + '/' + parseFloat(this.state.fighter2Odds).toFixed(2));
       const json = await response.json();
-      console.log(json)
       this.setState({
         winner: json.winner,
         probability: json.probability
